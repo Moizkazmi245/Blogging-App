@@ -10,12 +10,14 @@ const logOut_btn = document.querySelector('#logOut_btn');
 const loginBtn = document.querySelector('#login')
 const userProfileImage = document.querySelector('#userImage')
 const userName = document.querySelector('#userName');
-const userDiv = document.querySelector('#userProfileDiv')
+const userDiv = document.querySelector('#userProfileDiv');
+const showBlogUser = document.querySelector('.showBlogUsers');
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         const uid = user.uid;
         console.log(uid);
+        showBlogs()
 
         let users = await getUserData();
 
@@ -28,15 +30,29 @@ onAuthStateChanged(auth, async (user) => {
 
     } else {
         console.log("user is not logged in");
-        window.location = "./login.html"
-
-
+        window.location = "./BlogPage.html"
+        
+        
     }
 });
 
+let blogUsersList = [];
 
+async function showBlogs() {
+    try {
+        const querySnapshot = await getDocs(collection(db, 'Blogs'));
+        querySnapshot.forEach((doc) => {
+            blogUsersList.push({...doc.data(), ID: doc.id})
+            console.log("Data==>", doc.data(), "DocID==>", doc.id);
+        });
 
-
+        renderBlogUsers(blogUsersList)
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
 
 // async function UserTodo() {
 //     try {
@@ -85,4 +101,24 @@ logOut_btn.addEventListener('click', e => {
         alert(error)
     });
 })
+
+
+function renderBlogUsers(usersBlog) {
+    showBlogUser.innerHTML = "";
+
+    usersBlog.map(blogs =>{
+        showBlogUser.innerHTML += `<div class="container mt-5">
+    <div class="">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <img src="${blogs.Image}" class="card-img-top" width="10" height="200" alt="Card Image">
+                <div class="card-body">
+                    <h5 class="card-title">Title : ${blogs.Title}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>`
+    })
+}
 

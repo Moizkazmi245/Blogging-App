@@ -5,7 +5,8 @@ import { auth, db } from "./firebaseconfig.js";
 const signup_email = document.querySelector('#signup_email');
 const signup_password = document.querySelector('#signup_password');
 const signup_btn = document.querySelector('#signup-btn');
-const fullName = document.querySelector('#fullName')
+const fullName = document.querySelector('#fullName');
+const upload_widget = document.querySelector('#upload_widget')
 
 
 let uploadImageUrl = ""
@@ -20,32 +21,33 @@ var myWidget = cloudinary.createUploadWidget({
     }
   )
   
-  document.getElementById("upload_widget").addEventListener("click", function(){
+upload_widget.addEventListener("click", function(){
       myWidget.open();
     }, false);
 
 
-signup_btn.addEventListener('click', event =>{
+signup_btn.addEventListener('click', (event) =>{
+  event.preventDefault()
 
     // console.log("email==>", signup_email.value);
     // console.log("password==>", signup_password.value);
     
     createUserWithEmailAndPassword(auth, signup_email.value, signup_password.value)
-    .then( async (userCredential) => {
+    .then( async(userCredential) => {
       // Signed up 
       const user = userCredential.user;
       console.log("user==>", user);
-      window.location = 'login.html'
-
-
+      
+      
       try{
         const docRef = await addDoc (collection(db, 'Blog-Users'),{
             FullName : fullName.value,
             Email : signup_email.value,
             Profile: uploadImageUrl,
             uid: user.uid
-        });
-        console.log("Document ID:", docRef.id);
+          });
+          console.log("Document ID:", docRef.id);
+          window.location = 'login.html'
       }catch(e){
         console.log("error in document ID:" , e);
       }
