@@ -1,0 +1,138 @@
+.signUp {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #ebe8f7;
+    max-width: 500px;
+    width: 90%;
+    /* margin: 0 auto; */
+    padding: 50px;
+    gap: 10px;
+    border-radius: 10%;
+    margin: 50px auto; /* Centers the sign-in box */
+}
+
+.signIn h2 {
+    text-align: center;
+}
+
+.email-password-div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.signUpFullName input,
+.signUpEmail-div input,
+.signUpPassword-div input {
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 10px 10px 35px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.signUpFullName i,
+.signUpEmail-div i,
+.signUpPassword-div i  {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* color: #555; */
+}
+
+.signUpFullName,
+.signUpEmail-div,
+.signUpPassword-div {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+
+.btn-div .btn-5 {
+    background-color: #dad2f7;
+
+}
+
+.btn-div .btn-5:hover {
+    color: black;
+    background-color: #c8bafc;
+}
+
+
+.btn-div .btn-6 {
+    background-color: #280f80;
+    color: #ebe8f7;
+
+}
+
+.btn-div .btn-6:hover {
+    background-color: #3917b4;
+    color: #ebe8f7;
+}
+
+
+.uploadImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    background: #f8f9fa;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.uploadImage:hover {
+    background: #e9ecef;
+    border-color: #007bff;
+}
+
+
+#upload_widget {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#upload_widget:hover {
+    background-color: #0056b3;
+}
+
+.cloudinary-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cloudinary-button::before {
+    content: "📤"; /* Upload Icon */
+    font-size: 18px;
+}
+
+#signup-btn{
+    border: none;
+    padding: 10px;
+    background-color: #dad2f7;
+    border-radius: 10px;
+}
+
+#signup-btn:hover{
+    background-color: #c8bafc;
+}
