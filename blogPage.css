@@ -3,7 +3,6 @@
 * {
     font-family: "Josefin Sans", serif;
     font-optical-sizing: auto;
-    font-weight: 00;
     font-style: normal;
 }
 
@@ -45,9 +44,30 @@
     text-decoration: none;
 }
 
-.carousel-div img {
+.carousel-div{
+    background-color: #280f80;
+    background: linear-gradient(to right, #3816b4, #190a52);
+    height: 200vh;
+    max-height: 720px;
+    overflow: hidden;
+}
+
+
+.img-heading {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 30px 40px 30px;
+    align-items: center;
+}
+
+.carousel-div img{
     width: 100%;
-    max-height: 700px;
+    max-width: 800px;
+}
+
+.carousel-div h1{
+    color: #ebe8f7;
+    font-size: 3.5rem;
 }
 
 .main-content {
